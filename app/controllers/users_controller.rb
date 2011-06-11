@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if request.post?
       @user = User.new(params[:user])
       #Generate a 4 digit random token
-      user.token = 1000 + rand(9000)
+      @user.token = 1000 + rand(9000)
       
       if @user.save
         #send email to the user
