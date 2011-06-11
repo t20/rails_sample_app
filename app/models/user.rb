@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password , :if=>:has_password?
   
-  def has_password?a
+  def has_password?
     !@password.blank?
   end
 
