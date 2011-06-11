@@ -7,7 +7,15 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+<div id="header">
+  <ul id="nav">
+    <li><a href="/users/info">Info</a></li>
+    <li><a href="/users/moreinfo">More info</a></li>
+    <li><a href="/jobs">Jobs</a></li>
+    <li><a href="/logout">Logout</a></li>    
+  </ul>
+  
+</div>
 <%= yield %>
 
 </body>

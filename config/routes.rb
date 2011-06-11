@@ -13,6 +13,7 @@ JobProfile::Application.routes.draw do
   match 'activate(/:id/:token)' => 'users#activate'
   match '/users/info' => 'users#info'
   match '/users/moreinfo' => 'users#moreinfo'
+  match '/logout' => 'users#logout'
 
   resources :users do
     resources :jobs

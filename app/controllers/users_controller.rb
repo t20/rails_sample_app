@@ -46,11 +46,14 @@ class UsersController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     if request.post?
       @user = @user.update_attributes(params[:user])
-      redirect_to '/users/moreinfo'
+      redirect_to '/jobs'
     end
   end
 
-  def jobs
+  def logout
+    session[:user_id] = nil
+    redirect_to root_url
+    
   end
 
 end
