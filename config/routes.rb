@@ -1,9 +1,19 @@
 JobProfile::Application.routes.draw do
-  get "users/signup"
+  
+  get "users/new"
+
+  match '/signup', :to => 'users#signup'
 
   get "users/info"
 
   get "users/jobs"
+  get "users/notify"
+  
+  root :to => 'users#signup'
+  
+  resources :users do
+    resources :jobs
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
