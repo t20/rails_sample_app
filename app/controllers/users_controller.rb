@@ -19,10 +19,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def notify
+  end
+    
+  def activate
+    @user = User.find_by_id_and_token(params[:id] , params[:token])
+    @user.active = true
+    if @user.save
+      # request.session_options[:user_id] = @user.id
+      session[:user_id] = @user.id
+      redirect_to '/users/info'
+    else
+      render notify
+    end
+  end
+
   def info
+    @user = User.find_by_id(session[:user_id])
+    if request.post?
+      @user = @user.update_attributes(params[:user])
+      redirect_to '/users/moreinfo'
+    end
   end
   
-  def notify
+  def moreinfo
+    @user = User.find_by_id(session[:user_id])
+    if request.post?
+      @user = @user.update_attributes(params[:user])
+      redirect_to '/users/moreinfo'
+    end
   end
 
   def jobs

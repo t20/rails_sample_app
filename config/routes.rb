@@ -1,16 +1,19 @@
 JobProfile::Application.routes.draw do
-  
-  get "users/new"
 
-  match '/signup', :to => 'users#signup'
+  resources :jobs
+
+  root :to => 'users#signup'
 
   get "users/info"
-
+  get "users/new"
   get "users/jobs"
   get "users/notify"
-  
-  root :to => 'users#signup'
-  
+
+  match 'signup', :to => 'users#signup'
+  match 'activate(/:id/:token)' => 'users#activate'
+  match '/users/info' => 'users#info'
+  match '/users/moreinfo' => 'users#moreinfo'
+
   resources :users do
     resources :jobs
   end

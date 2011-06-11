@@ -1,16 +1,9 @@
-# == Schema Information
-# Schema version: 20110611013828
-#
-# Table name: jobs
-#
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  company    :string(255)
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 class Job < ActiveRecord::Base
   belongs_to :user
+  
+  attr_accessible :title, :company
+  
+  validates :title, :presence => true, :length => { :maximum => 50 }
+  validates :company, :presence => true, :length => { :maximum => 50 }  
+  # validates :user_id, :presence => true
 end
